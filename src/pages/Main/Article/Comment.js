@@ -5,9 +5,11 @@ class Comment extends React.Component {
     return (
       <li className="feeds__comment">
         <div className="feeds__comment-column">
-          <span className="feeds__comment-column id">nowhhk</span>
+          <span className="feeds__comment-column id">
+            {this.props.content.username}
+          </span>
           <span className="feeds__comment-column content">
-            {this.props.content}
+            {this.props.content.content}
           </span>
         </div>
 

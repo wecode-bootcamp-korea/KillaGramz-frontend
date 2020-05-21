@@ -8,7 +8,9 @@ class SignUp extends React.Component {
     super();
 
     this.state = {
-      id: "",
+      email: "",
+      fullname: "",
+      username: "",
       password: "",
       btnColor: "disabled",
     };
@@ -21,18 +23,47 @@ class SignUp extends React.Component {
   handlePWD = (event) => {
     this.setState({ password: event.target.value });
   };
+  handleUsername = (event) => {
+    this.setState({ username: event.target.value });
+  };
+  handleFullname = (event) => {
+    this.setState({ fullname: event.target.value });
+  };
 
-  handleColor = (event) => {
-    if (
-      this.state.id.length >= 1 &&
-      this.state.password.length >= 1 &&
-      this.state.id.includes("@")
-    ) {
-      console.log("로그인 가능");
-      this.setState({ btnColor: "able" });
-    } else {
-      this.setState({ btnColor: "disabled" });
-    }
+  // handleColor = (event) => {
+  //   if (
+  //     this.state.id.length >= 1 &&
+  //     this.state.password.length >= 1 &&
+  //     this.state.id.includes("@")
+  //   ) {
+  //     console.log("로그인 가능");
+  //     this.setState({ btnColor: "able" });
+  //   } else {
+  //     this.setState({ btnColor: "disabled" });
+  //   }
+  // };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("id: ", this.state.username);
+    fetch("http://10.58.4.72:8000/account/signup", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email_or_phone: this.state.email,
+        fullname: this.state.fullname,
+        username: this.state.username,
+        password: this.state.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message === "ALREADY EXIST") {
+          alert("중복된 정보입니다.");
+        }
+      });
   };
 
   render() {
@@ -50,24 +81,27 @@ class SignUp extends React.Component {
               placeholder="휴대폰 번호 또는 이메일"
             />
             <input
-              onChange={this.handlePWD}
-              className="username"
+              onChange={this.handleFullname}
+              className="fullname"
               type="text"
               placeholder="사용자 이름"
+            />
+            <input
+              onChange={this.handleUsername}
+              className="username"
+              type="text"
+              placeholder="ID"
             />
             <input
               onChange={this.handlePWD}
               className="password"
               type="password"
-              placeholder="비밀번호"
+              placeholder="PASSWORD"
             />
-            <button onClick={this.goToMain} className={this.state.btnColor}>
+            <button onClick={this.handleSubmit} className={this.state.btnColor}>
               가입
             </button>
           </form>
-          <div className="link">
-            <div>계정이 있으신가요? </div>
-          </div>
         </div>
         <div className="account">
           <p>

@@ -6,6 +6,7 @@ class Article extends React.Component {
     super();
 
     this.state = {
+      username: "",
       content: "",
       commentList: [],
     };
@@ -19,16 +20,41 @@ class Article extends React.Component {
 
   addComment = (e) => {
     e.preventDefault();
-    let arr = [...this.state.commentList];
-    arr.push(this.state.content);
-    console.log(arr);
-    this.setState({ commentList: arr });
-    this.setState({ content: "" });
+    const token = localStorage.getItem("access_token");
+    fetch("http://10.58.4.72:8000/comment", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: token, //Authorization : 인증토큰을 서버로 보낼때
+      },
+      body: JSON.stringify({
+        content: this.state.content,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+    // .then((res) => {
+    //   this.setState({ commentList: res.message });
+    //   this.setState({ content: "" });
+    // });
   };
 
+  // componentDidMount() {
+  //   const token = localStorage.getItem("access_token");
+  //   fetch("http://10.58.4.72:8000/comment", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //       Authorization: token,
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => this.setState({ commentList: res.message }));
+  // }
+
   render() {
-    const map = this.state.commentList.map((content) => {
-      return <Comment content={content} />;
+    const map = this.state.commentList.map((content, index) => {
+      return <Comment content={content} key={index} />;
     });
     return (
       <article>

@@ -41,7 +41,6 @@ class Main extends React.Component {
         <main>
           <div className="feeds">
             <Article />
-            <Article />
           </div>
 
           <div className="main-right">
