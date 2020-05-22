@@ -1,6 +1,6 @@
 import React from "react";
 
-class Comment extends React.Component {
+class Comment_HK extends React.Component {
   render() {
     return (
       <li className="feeds__comment">
@@ -25,4 +25,4 @@ class Comment extends React.Component {
   }
 }
 
-export default Comment;
+export default Comment_HK;

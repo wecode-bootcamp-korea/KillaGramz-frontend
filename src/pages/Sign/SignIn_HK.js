@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./Sign.scss";
 import Logo from "../../images/logo_text.png";
 
-class SignIn extends React.Component {
+class SignIn_HK extends React.Component {
   constructor() {
     super();
 
@@ -16,7 +16,7 @@ class SignIn extends React.Component {
 
   goToMain = (e) => {
     e.preventDefault();
-    fetch("http://10.58.4.72:8000/account/signin", {
+    fetch("http://10.58.0.249:8000/account/signin", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -27,35 +27,19 @@ class SignIn extends React.Component {
       }),
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res)) 콘솔은 동기라서 res받은거 확인하면 없애기. 콘솔찍고 then붙이면 안된다.
-      // .then((res) => localStorage.setItem("access_token", res.access_token));
       .then((res) => {
         if (res.access_token) {
           localStorage.setItem("access_token", res.access_token);
           console.log("로그인");
-          this.props.history.push("/main");
+          this.props.history.push("/main-hk");
         } else {
           alert("로그인 정보를 확인하세요");
         }
       });
   };
 
-  // goToMain = (event) => {
-  //   event.preventDefault();
-  //   console.log(this.state);
-
-  //   if (
-  //     this.state.id.length >= 1 &&
-  //     this.state.password.length >= 1 &&
-  //     this.state.id.includes("@")
-  //   ) {
-  //     event.target.style.backgroundColor = "blue";
-  //     this.props.history.push("/main");
-  //   }
-  // };
-
   goToSignup = (event) => {
-    this.props.history.push("/signup");
+    this.props.history.push("/signup-hk");
   };
 
   handleID = (event) => {
@@ -113,4 +97,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default withRouter(SignIn);
+export default withRouter(SignIn_HK);

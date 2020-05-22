@@ -1,6 +1,6 @@
 import React from "react";
 
-function RecommendID() {
+function RecommendID_HK() {
   return (
     <li className="main-right__part-content part2">
       <div className="column-part2">
@@ -27,4 +27,4 @@ function RecommendID() {
   );
 }
 
-export default RecommendID;
+export default RecommendID_HK;

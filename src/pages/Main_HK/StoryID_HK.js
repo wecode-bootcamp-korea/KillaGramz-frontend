@@ -1,6 +1,6 @@
 import React from "react";
 
-function StoryID() {
+function StoryID_HK() {
   return (
     <li className="main-right__part-content">
       <div className="main-right__part-content-column">
@@ -20,4 +20,4 @@ function StoryID() {
   );
 }
 
-export default StoryID;
+export default StoryID_HK;

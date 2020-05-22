@@ -1,11 +1,11 @@
 import React from "react";
-import Article from "./Article/Article";
-import StoryID from "./StoryID";
-import RecommendID from "./RecommendID";
+import Article_HK from "./Article_HK/Article_HK";
+import StoryID_HK from "./StoryID_HK";
+import RecommendID_HK from "./RecommendID_HK";
 import Logo from "../../images/logo_text.png";
-import "./Main.scss";
+import "./Main_HK.scss";
 
-class Main extends React.Component {
+class Main_HK extends React.Component {
   render() {
     return (
       <div>
@@ -40,7 +40,7 @@ class Main extends React.Component {
         </nav>
         <main>
           <div className="feeds">
-            <Article />
+            <Article_HK />
           </div>
 
           <div className="main-right">
@@ -68,11 +68,11 @@ class Main extends React.Component {
               </div>
 
               <ul className="main-right__part-contents">
-                <StoryID />
-                <StoryID />
-                <StoryID />
-                <StoryID />
-                <StoryID />
+                <StoryID_HK />
+                <StoryID_HK />
+                <StoryID_HK />
+                <StoryID_HK />
+                <StoryID_HK />
               </ul>
             </div>
             <div className="main-right__part section2">
@@ -85,9 +85,9 @@ class Main extends React.Component {
                 </div>
               </div>
               <ul className="main-right__part-contents">
-                <RecommendID />
-                <RecommendID />
-                <RecommendID />
+                <RecommendID_HK />
+                <RecommendID_HK />
+                <RecommendID_HK />
               </ul>
             </div>
           </div>
@@ -97,4 +97,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default Main_HK;

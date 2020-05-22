@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import "./Sign.scss";
 import Logo from "../../images/logo_text.png";
 
-class SignUp extends React.Component {
+class SignUp_HK extends React.Component {
   constructor() {
     super();
 
@@ -30,23 +30,10 @@ class SignUp extends React.Component {
     this.setState({ fullname: event.target.value });
   };
 
-  // handleColor = (event) => {
-  //   if (
-  //     this.state.id.length >= 1 &&
-  //     this.state.password.length >= 1 &&
-  //     this.state.id.includes("@")
-  //   ) {
-  //     console.log("로그인 가능");
-  //     this.setState({ btnColor: "able" });
-  //   } else {
-  //     this.setState({ btnColor: "disabled" });
-  //   }
-  // };
-
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("id: ", this.state.username);
-    fetch("http://10.58.4.72:8000/account/signup", {
+    fetch("http://10.58.0.249:8000/account/signup", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -62,6 +49,8 @@ class SignUp extends React.Component {
       .then((res) => {
         if (res.message === "ALREADY EXIST") {
           alert("중복된 정보입니다.");
+        } else {
+          this.props.history.push("/signin-hk");
         }
       });
   };
@@ -108,7 +97,7 @@ class SignUp extends React.Component {
             계정이 있으신가요?
             <span
               onClick={(e) => {
-                this.props.history.push("/");
+                this.props.history.push("/signin-hk");
               }}
             >
               로그인
@@ -120,4 +109,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default withRouter(SignUp);
+export default withRouter(SignUp_HK);

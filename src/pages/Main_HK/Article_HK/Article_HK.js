@@ -1,7 +1,7 @@
 import React from "react";
-import Comment from "./Comment";
+import Comment_HK from "./Comment_HK";
 
-class Article extends React.Component {
+class Article_HK extends React.Component {
   constructor() {
     super();
 
@@ -21,7 +21,7 @@ class Article extends React.Component {
   addComment = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("access_token");
-    fetch("http://10.58.4.72:8000/comment", {
+    fetch("http://10.58.0.249:8000/comment", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -32,29 +32,15 @@ class Article extends React.Component {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res));
-    // .then((res) => {
-    //   this.setState({ commentList: res.message });
-    //   this.setState({ content: "" });
-    // });
+      .then((res) => {
+        this.setState({ commentList: res.message });
+        this.setState({ content: "" });
+      });
   };
-
-  // componentDidMount() {
-  //   const token = localStorage.getItem("access_token");
-  //   fetch("http://10.58.4.72:8000/comment", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //       Authorization: token,
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ commentList: res.message }));
-  // }
 
   render() {
     const map = this.state.commentList.map((content, index) => {
-      return <Comment content={content} key={index} />;
+      return <Comment_HK content={content} key={index} />;
     });
     return (
       <article>
@@ -146,4 +132,4 @@ class Article extends React.Component {
   }
 }
 
-export default Article;
+export default Article_HK;
