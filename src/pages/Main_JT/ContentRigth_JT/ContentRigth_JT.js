@@ -14,8 +14,8 @@ class ContentRigth_JT extends Component {
                         <div className="profile">
                             <img src={profileImg} alt="profile" className="profile_img" />
                             <div className="profile_info">
-                                <p className="profile_id">아이디</p>
-                                <p className="profile_intro">자기소개</p>
+                                <p className="profile_id">kimjjjjjjjjintae</p>
+                                <p className="profile_intro">프론트개발자 진태의 위스타구램~</p>
                             </div>
                         </div>
                     </div>

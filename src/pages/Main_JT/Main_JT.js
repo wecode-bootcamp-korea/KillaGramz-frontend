@@ -6,10 +6,6 @@ import './Main_JT.scss';
 
 class Main_JT extends Component {
     
-    componentDidMount() {
-        const token = localStorage.getItem("access_token");
-        console.log(token);
-    }
     render() {
         return (
             <div className="Main_JT">

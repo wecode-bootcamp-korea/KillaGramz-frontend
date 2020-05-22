@@ -16,6 +16,21 @@ class Feed_JT extends Component {
 
     componentDidMount() {
         const token = localStorage.getItem('access_token');
+        fetch("http://10.58.0.249:8000/comment" , {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": token
+            },
+        })
+        .then(res => res.json())
+        .then(res => { 
+            if(token) {
+                this.setState({
+                    comments: res.comment,
+                });
+            }  
+        }).catch(err => console.log("fetch error: ", err));
     }
 
     // button color change
@@ -88,7 +103,7 @@ class Feed_JT extends Component {
                     <div className="feed_profile">
                         <div className="profile">
                             <img src={profileImg} alt="profile" className="profile_img" />
-                            <p className="profile_id">아이디</p>
+                            <p className="profile_id">kimjjjjjjjjintae</p>
                         </div>
                         <div className="profile_add link_list">
                             <button type="button" className="state_btn">
@@ -140,8 +155,8 @@ class Feed_JT extends Component {
                             <div className="comment_list comments_margin feed_user">
                                 <div className="comments_info">
                                     <div className="comments_tit">
-                                        <span className="user_id">아이디</span>
-                                        <span className="comment_contents">쿠킹클래스</span>
+                                        <span className="user_id">kimjjjjjjjjintae</span>
+                                        <span className="comment_contents">위스타그램구현</span>
                                     </div>
                                 </div>
                             </div>
