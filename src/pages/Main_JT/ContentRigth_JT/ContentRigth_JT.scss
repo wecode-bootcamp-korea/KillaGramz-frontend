@@ -1,0 +1,44 @@
+.ContentRigth_JT {
+    width: 383px;
+    box-sizing: border-box;
+    .feed_profile {
+        .profile {
+            display: flex;
+            align-items: center;
+            .profile_img {
+                width: 40px;
+                margin-right: 10px;
+                border-radius: 50%; 
+            }
+            .profile_info {
+                flex: 1;
+                p {
+                    line-height: 1.4;
+                }
+                .profile_id {
+                    font-size: 15px;
+                    font-weight: bold;
+                }
+                .profile_intro {
+                    width: 150px;
+                    overflow:hidden;
+                    text-overflow:ellipsis;
+                    white-space:nowrap;
+                    font-size: 12px;
+                    color: #8b8b8b;
+                }
+            }
+        }
+    }
+    .feed_profile.aside_profile {
+        padding: 10px 0;
+        .profile_img {
+            width: 50px;
+        }
+    }
+    .profile.follow_list {
+        display: block;
+        width: 100%;
+        max-height: 175px;
+    }
+}
